@@ -1,0 +1,71 @@
+<div class="player-outer">
+	<div class="player-inner">
+		<div ref:player></div>
+	</div>
+</div>
+
+<style>
+	.player-outer {
+		position: relative;
+		width: 100%;
+		height: 0;
+		padding: 0 0 56.25% 0;
+	}
+
+	.player-inner {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+<script>
+	const ready = new Promise((fulfil, reject) => {
+		window.onYouTubeIframeAPIReady = () => {
+			fulfil();
+			delete window.onYouTubeIframeAPIReady;
+		};
+
+		const scr = document.createElement('script');
+		scr.src = 'https://www.youtube.com/iframe_api';
+		document.body.appendChild(scr);
+
+		scr.onerror = reject;
+	});
+
+	export default {
+		async oncreate() {
+			await ready;
+
+			this.setup();
+
+			this.on('state', ({ changed, current }) => {
+				if (changed.id) {
+					this.player.destroy();
+					this.setup();
+				}
+			});
+		},
+
+		ondestroy() {
+			if (this.player) this.player.destroy();
+		},
+
+		methods: {
+			setup() {
+				const { id } = this.get();
+
+				const player = this.player = new YT.Player(this.refs.player, {
+					width: '100%',
+					height: '100%',
+					videoId: id,
+					events: {
+						onReady: event => {
+							player.playVideo();
+						}
+					}
+				});
+			}
+		}
+	};
+</script>

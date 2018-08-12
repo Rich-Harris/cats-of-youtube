@@ -1,0 +1,100 @@
+<main>
+	<h1>The Cats of YouTube</h1>
+
+	{@debug cats}
+
+	{#each cats as cat}
+		<figure>
+			<img
+				alt="{cat.name} thumbnail"
+				class="{cat === selected ? 'selected' : ''}"
+				src="thumbnails/{cat.thumbnail}"
+				on:click="set({ selected: cat })"
+			>
+			<figcaption>{cat.name}</figcaption>
+		</figure>
+	{/each}
+
+	<div class="selection">
+		{#if selected}
+			{@debug selected}
+			<YouTubePlayer id={selected.id}/>
+		{:else}
+			<p>Click on a cat 😺</p>
+		{/if}
+	</div>
+</main>
+
+<style>
+	main {
+		text-align: center;
+		font-family: 'Butterfly Kids', cursive;
+		max-width: 800px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: 10px;
+	}
+
+	h1, .selection {
+		grid-column-start: 1;
+		grid-column-end: 4;
+	}
+
+	h1 {
+		font-size: 4em;
+		font-weight: 400;
+	}
+
+	p {
+		font-size: 2em;
+	}
+
+	.selection {
+		width: 100%;
+		height: 100%;
+		background-color: #333;
+	}
+
+	.selection::before {
+		content: '';
+		width: 1px;
+		margin-left: -1px;
+		padding-bottom: 56.25%;
+		display: block;
+		float: left;
+	}
+
+	.selection::after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+
+	figure {
+		width: 100%;
+		margin: 0 1em 2em 0;
+	}
+
+	img {
+		width: 100%;
+		border-radius: 4px;
+		box-shadow: 0px 0px 15px rgba(0,0,0,0.4)
+	}
+
+	figcaption {
+		font-size: 2em;
+	}
+
+	.selected {
+		box-shadow: 0px 0px 25px rgba(30,80,255,1);
+	}
+</style>
+
+<script>
+	export default {
+		components: {
+			YouTubePlayer: './YouTubePlayer.html'
+		}
+	};
+</script>

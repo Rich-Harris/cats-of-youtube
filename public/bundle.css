@@ -1,0 +1,5 @@
+main.svelte-255j2w{text-align:center;font-family:'Butterfly Kids', cursive;max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;grid-gap:10px}h1.svelte-255j2w,.selection.svelte-255j2w{grid-column-start:1;grid-column-end:4}h1.svelte-255j2w{font-size:4em;font-weight:400}p.svelte-255j2w{font-size:2em}.selection.svelte-255j2w{width:100%;height:100%;background-color:#333}.selection.svelte-255j2w::before{content:'';width:1px;margin-left:-1px;padding-bottom:56.25%;display:block;float:left}.selection.svelte-255j2w::after{content:'';display:table;clear:both}figure.svelte-255j2w{width:100%;margin:0 1em 2em 0}img.svelte-255j2w{width:100%;border-radius:4px;box-shadow:0px 0px 15px rgba(0,0,0,0.4)
+	}figcaption.svelte-255j2w{font-size:2em}.selected.svelte-255j2w{box-shadow:0px 0px 25px rgba(30,80,255,1)}
+.player-outer.svelte-1x601te{position:relative;width:100%;height:0;padding:0 0 56.25% 0}.player-inner.svelte-1x601te{position:absolute;width:100%;height:100%}
+
+/*# sourceMappingURL=bundle.css.map */
